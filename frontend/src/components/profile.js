@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SummaryApi from "../common";
@@ -9,11 +9,44 @@ const ProfilePage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [profile, setProfile] = useState({
-        username: 'John Doe',
-        phoneNumber: '123-456-7890',
-        email: 'johndoe@example.com',
-        address: '123 Main St, Anytown, USA',
+        name: 'exmaple',
+        phoneNumber: '7763913928',
+        email: 'example@example.com',
+        address: 'Phagwara, Punjab, Pin code - 144401',
+        profilePic: ""
     });
+
+    useEffect(() => {
+        const fetchUserDetails = async () => {
+            try {
+                const dataResponse = await fetch(SummaryApi.current_user.url, {
+                    method: SummaryApi.current_user.method,
+                    credentials: 'include',
+                });
+
+                if (!dataResponse.ok) {
+                    throw new Error('Failed to fetch user details');
+                }
+
+                const dataApi = await dataResponse.json();
+
+                if (dataApi.success) {
+                    const { name, email, profilePic } = dataApi.data
+                    setProfile({
+                        name: name,
+                        phoneNumber: '7763913828',
+                        email: email,
+                        address: 'Phagwara, Punjab, Pin code - 144401',
+                        profilePic: profilePic
+                    })
+                }
+            } catch (error) {
+                console.error('Error fetching user details:', error);
+            }
+        };
+
+        fetchUserDetails();
+    }, []);
 
     const handleLogout = async () => {
         const fetchData = await fetch(SummaryApi.logout_user.url, {
@@ -54,9 +87,14 @@ const ProfilePage = () => {
                 </div>
             </div>
             <div className="flex items-center space-x-4 mb-4">
-                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
+
+                <img
+                    src={profile?.profilePic}
+                    className="w-[100px] h-[100px] rounded-full"
+                    alt={profile?.name}
+                />
                 <div>
-                    <h3 className="text-lg font-bold">{profile.username}</h3>
+                    <h3 className="text-lg font-bold">{profile.name}</h3>
                     <p className="text-gray-600">{profile.phoneNumber}</p>
                     <p className="text-gray-600">{profile.email}</p>
                 </div>
