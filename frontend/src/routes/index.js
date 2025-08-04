@@ -11,10 +11,11 @@ import CategoryProduct from '../pages/CategoryProduct';
 import ProductDetails from '../pages/ProductDetails';
 import Cart from '../pages/Cart';
 import SearchProduct from '../pages/SearchProduct';
-import About from '../pages/About'; // Import the About component
+import About from '../pages/About';
 import Contact from '../pages/Contact';
 import Privacy from '../pages/Privacy';
 import Profile from '../components/profile';
+import EditProfile from '../components/editProfile';
 
 const router = createBrowserRouter([
     {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
             {
                 path:"profile",
                 element:<Profile/>
+            },
+            {
+                path: "editProfile",
+                element: <EditProfile />
             }
         ]
     }

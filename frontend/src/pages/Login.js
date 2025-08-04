@@ -59,9 +59,9 @@ const Login = () => {
     
   return (
     <section id='login'>
-        <div className='mx-auto container p-4'>
+        <div className='mx-auto container p-4 mt-20'>
 
-            <div className='bg-white p-5 w-full max-w-sm mx-auto'>
+            <div className='bg-white p-5 w-full max-w-sm mx-auto shadow-2xl rounded-2xl'>
                     <div className='w-20 h-20 mx-auto'>
                         <img src={loginIcons} alt='login icons'/>
                     </div>

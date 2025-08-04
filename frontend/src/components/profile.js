@@ -68,12 +68,12 @@ const ProfilePage = () => {
     };
 
     return (
-        <div className="max-w-md mx-auto p-4 md:p-6 lg:p-8 bg-white rounded-xl shadow-2xl mt-[140px]">
-            <div className="flex items-center justify-between mb-4">
-                <h2 className="text-3xl font-bold">Profile</h2>
+        <div className=" mx-96 md:p-6 lg:p-8 bg-white rounded-xl shadow-2xl mt-[100px]">
+            <div className="flex items-center justify-between mb-16">
+                <h2 className="text-5xl font-bold text-blue-600 mx-14">Profile</h2>
                 <div className="flex items-center space-x-2">
                     <button
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
+                        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-xl"
                         onClick={() => window.location.href = '/'}
                     >
                         Home
@@ -86,29 +86,31 @@ const ProfilePage = () => {
                     </button>
                 </div>
             </div>
-            <div className="flex items-center space-x-4 mb-4">
+            <div className="flex items-center space-x-4">
 
                 <img
                     src={profile?.profilePic}
-                    className="w-[100px] h-[100px] rounded-full"
-                    alt={profile?.name}
+                    className="w-[150px] h-[150px] rounded-full bg-blue-500 mx-14 mr-20"
+                    alt="img"
                 />
-                <div>
-                    <h3 className="text-lg font-bold">{profile.name}</h3>
-                    <p className="text-gray-600">{profile.phoneNumber}</p>
-                    <p className="text-gray-600">{profile.email}</p>
+                <div className=' border-2 border-black p-6 rounded-2xl'>
+                    <h3 className="text-lg font-bold">Name: {profile.name}</h3>
+                    <p className="text-gray-600">Phone: {profile.phoneNumber}</p>
+                    <p className="text-gray-600">Email: {profile.email}</p>
+                    <div className="mb-2">
+                        <h3 className="text-lg font-bold mt-5">Address:</h3>
+                        <p className="text-gray-600">{profile.address}</p>
+                    </div>
                 </div>
             </div>
-            <div className="mb-4">
-                <h3 className="text-lg font-bold">Address</h3>
-                <p className="text-gray-600">{profile.address}</p>
-            </div>
-            <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
-                onClick={() => console.log('Edit profile')}
-            >
-                Edit Profile
-            </button>
+            <Link to="/editProfile">
+                <button
+                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-xl mt-5 mx-10"
+                    onClick={() => navigate('/editProfile', { state: profile })}
+                >
+                    Edit Profile
+                </button>
+            </Link>
         </div>
     );
 };

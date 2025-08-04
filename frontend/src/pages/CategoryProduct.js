@@ -95,11 +95,8 @@ const CategoryProduct = () => {
   return (
     <div className='container mx-auto p-4'>
 
-       {/***desktop version */}
        <div className='hidden lg:grid grid-cols-[200px,1fr]'>
-           {/***left side */}
            <div className='bg-white p-2 min-h-[calc(100vh-120px)] overflow-y-scroll'>
-                {/**sort by */}
                 <div className=''>
                     <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Sort by</h3>
 

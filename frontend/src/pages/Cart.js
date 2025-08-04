@@ -116,7 +116,6 @@ const Cart = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4">
-        {/***view product */}
         <div className="w-full max-w-3xl">
           {loading
             ? loadingCart?.map((el, index) => {
@@ -140,7 +139,6 @@ const Cart = () => {
                       />
                     </div>
                     <div className="px-4 py-2 relative">
-                      {/**delete product */}
                       <div
                         className="absolute right-0 text-blue-600 rounded-full p-2 hover:bg-blue-600 hover:text-white cursor-pointer"
                         onClick={() => deleteCartProduct(product?._id)}
@@ -189,7 +187,6 @@ const Cart = () => {
               })}
         </div>
 
-        {/***summary  */}
         <div className="mt-5 lg:mt-0 w-full max-w-sm">
           {loading ? (
             <div className="h-36 bg-slate-200 border border-slate-300 animate-pulse"></div>
